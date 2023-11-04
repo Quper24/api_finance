@@ -4,6 +4,7 @@ import express from "express";
 import { getFinanceData } from "./modules/getFinanceData.js";
 import { addFinanceData } from "./modules/addFinanceData.js";
 import { getCategories } from "./modules/getCategories.js";
+import { resetDB } from "./modules/resetDB.js";
 
 // Инициализация Express приложения
 const app = express();
@@ -15,6 +16,7 @@ app.use(express.json());
 app.get("/api/finance", getFinanceData);
 app.post("/api/finance", addFinanceData);
 app.get("/api/categories", getCategories);
+app.get("/api/reset", resetDB);
 
 // Запуск сервера
 const port = 3000;
