@@ -1,9 +1,9 @@
 // Импорт необходимых модулей
 import express from "express";
 
-import { getFinanceData } from "./modules/getFinanceData";
-import { addFinanceData } from "./modules/addFinanceData";
-import { getCategories } from "./modules/getCategories"; // Новый импорт
+import { getFinanceData } from "./modules/getFinanceData.js";
+import { addFinanceData } from "./modules/addFinanceData.js";
+import { getCategories } from "./modules/getCategories.js";
 
 // Инициализация Express приложения
 const app = express();

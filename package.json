@@ -3,10 +3,22 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node index",
+    "dev": "nodemon index",
+    "lint": "eslint . --fix"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC"
+  "author": "Maksim Leskin <maksim.leskin@methed.ru>",
+  "license": "ISC",
+  "dependencies": {
+    "eslint": "^8.49.0",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-plugin-prettier": "^5.0.0",
+    "nodemon": "^3.0.1",
+    "prettier": "3.0.1",
+    "express": "^4.18.2",
+    "uuid": "^9.0.1"
+  }
 }

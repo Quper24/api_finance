@@ -17,7 +17,7 @@ export const addFinanceData = async (req, res) => {
   if (!allowedTypes.includes(type)) {
     return res.status(400).json({
       message:
-        "Тип операции не распознан. Допустимые значения: 'income' или 'outcome'.",
+        "Тип операции не распознан. Допустимые значения: 'income' или 'expenses'.",
     });
   }
 
@@ -28,7 +28,20 @@ export const addFinanceData = async (req, res) => {
   }
 
   const id = uuidv4();
-  const newItem = { id, type, amount, description, category };
+
+  const date = new Date().toISOString();
+
+  const formatCategory =
+    category[0].toUpperCase() + category.slice(1).toLowerCase();
+
+  const newItem = {
+    id,
+    type,
+    amount,
+    description,
+    category: formatCategory,
+    date,
+  };
 
   try {
     // Добавление новой категории в db_categories.json, если таковая ещё не существует
@@ -36,8 +49,8 @@ export const addFinanceData = async (req, res) => {
     const categories = JSON.parse(categoriesData);
 
     // Проверяем, есть ли категория в соответствующем списке, и добавляем при необходимости
-    if (!categories[type].includes(category)) {
-      categories[type].push(category);
+    if (!categories[type].includes(formatCategory)) {
+      categories[type].push(formatCategory);
       await writeFile(categoriesFilePath, JSON.stringify(categories), "utf8");
     }
 
@@ -49,6 +62,7 @@ export const addFinanceData = async (req, res) => {
 
     res.status(201).json(newItem);
   } catch (err) {
+    console.log("err: ", err);
     res.status(500).json({ message: "Ошибка при работе с файлом" });
   }
 };
