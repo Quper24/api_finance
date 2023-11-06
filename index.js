@@ -5,6 +5,7 @@ import { getFinanceData } from "./modules/getFinanceData.js";
 import { addFinanceData } from "./modules/addFinanceData.js";
 import { getCategories } from "./modules/getCategories.js";
 import { resetDB } from "./modules/resetDB.js";
+import { deleteFinanceData } from "./modules/deleteFinanceData.js";
 
 // Инициализация Express приложения
 const app = express();
@@ -17,6 +18,7 @@ app.get("/api/finance", getFinanceData);
 app.post("/api/finance", addFinanceData);
 app.get("/api/categories", getCategories);
 app.get("/api/reset", resetDB);
+app.delete("/api/finance/:id", deleteFinanceData);
 
 // Запуск сервера
 const port = 3000;
