@@ -9,7 +9,7 @@
   },
   {
     "id": "2",
-    "type": "expense",
+    "type": "expenses",
     "amount": 3200,
     "description": "Аренда жилья",
     "category": "Жилье",
@@ -17,7 +17,7 @@
   },
   {
     "id": "3",
-    "type": "expense",
+    "type": "expenses",
     "amount": 1200,
     "description": "Книги",
     "category": "Образование",
@@ -25,7 +25,7 @@
   },
   {
     "id": "4",
-    "type": "expense",
+    "type": "expenses",
     "amount": 250,
     "description": "Транспорт",
     "category": "Транспорт",
@@ -41,7 +41,7 @@
   },
   {
     "id": "6",
-    "type": "expense",
+    "type": "expenses",
     "amount": 850,
     "description": "Продукты",
     "category": "Еда",
@@ -49,7 +49,7 @@
   },
   {
     "id": "7",
-    "type": "expense",
+    "type": "expenses",
     "amount": 1900,
     "description": "Одежда",
     "category": "Шоппинг",
@@ -57,7 +57,7 @@
   },
   {
     "id": "8",
-    "type": "expense",
+    "type": "expenses",
     "amount": 480,
     "description": "Интернет",
     "category": "Коммунальные услуги",
@@ -65,7 +65,7 @@
   },
   {
     "id": "9",
-    "type": "expense",
+    "type": "expenses",
     "amount": 1500,
     "description": "Ресторан",
     "category": "Развлечения",
@@ -81,7 +81,7 @@
   },
   {
     "id": "11",
-    "type": "expense",
+    "type": "expenses",
     "amount": 2500,
     "description": "Техника",
     "category": "Электроника",
@@ -89,7 +89,7 @@
   },
   {
     "id": "12",
-    "type": "expense",
+    "type": "expenses",
     "amount": 150,
     "description": "Общественный транспорт",
     "category": "Транспорт",
@@ -105,7 +105,7 @@
   },
   {
     "id": "14",
-    "type": "expense",
+    "type": "expenses",
     "amount": 650,
     "description": "Лекарства",
     "category": "Здоровье",
@@ -121,7 +121,7 @@
   },
   {
     "id": "16",
-    "type": "expense",
+    "type": "expenses",
     "amount": 550,
     "description": "Кафе",
     "category": "Еда",
@@ -129,7 +129,7 @@
   },
   {
     "id": "17",
-    "type": "expense",
+    "type": "expenses",
     "amount": 3000,
     "description": "Подарки",
     "category": "Подарки",
@@ -137,7 +137,7 @@
   },
   {
     "id": "18",
-    "type": "expense",
+    "type": "expenses",
     "amount": 2200,
     "description": "Ремонт",
     "category": "Дом",
@@ -153,7 +153,7 @@
   },
   {
     "id": "20",
-    "type": "expense",
+    "type": "expenses",
     "amount": 3300,
     "description": "Путешествие",
     "category": "Отдых",
