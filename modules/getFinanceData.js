@@ -2,10 +2,6 @@ import { readFile } from "fs/promises";
 // Путь к файлу данных
 const dataFilePath = "./db.json";
 // Функция-обработчик для GET-запроса
-import { readFile } from "fs/promises";
-
-const dataFilePath = "./db.json";
-
 export const getFinanceData = async (req, res) => {
   const { startDate, endDate } = req.query;
 
@@ -25,11 +21,9 @@ export const getFinanceData = async (req, res) => {
     /^\d{4}-\d{2}-\d{2}$/.test(date) && !isNaN(new Date(date).getTime());
 
   if (!validateDate(start) || !validateDate(end)) {
-    return res
-      .status(400)
-      .json({
-        message: "Некорректный формат даты. Используйте формат YYYY-MM-DD.",
-      });
+    return res.status(400).json({
+      message: "Некорректный формат даты. Используйте формат YYYY-MM-DD.",
+    });
   }
 
   try {
