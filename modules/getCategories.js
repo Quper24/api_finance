@@ -2,7 +2,7 @@
 import { readFile } from "fs/promises";
 
 // Путь к файлу с категориями
-const categoriesFilePath = "../db_categories.json";
+const categoriesFilePath = "./db_categories.json";
 
 // Функция-обработчик для GET-запроса категорий
 export async function getCategories(req, res) {
