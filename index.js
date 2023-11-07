@@ -6,6 +6,7 @@ import { addFinanceData } from "./modules/addFinanceData.js";
 import { getCategories } from "./modules/getCategories.js";
 import { resetDB } from "./modules/resetDB.js";
 import { deleteFinanceData } from "./modules/deleteFinanceData.js";
+import { getTestData } from "./modules/getTestData.js";
 
 // Инициализация Express приложения
 const app = express();
@@ -15,6 +16,7 @@ app.use(express.json());
 
 // Регистрация обработчиков
 app.get("/api/finance", getFinanceData);
+app.get("/api/test", getTestData);
 app.post("/api/finance", addFinanceData);
 app.get("/api/categories", getCategories);
 app.get("/api/reset", resetDB);
