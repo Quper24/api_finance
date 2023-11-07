@@ -1,5 +1,6 @@
 // Импорт необходимых модулей
 import express from "express";
+import cors from "cors";
 
 import { getFinanceData } from "./modules/getFinanceData.js";
 import { addFinanceData } from "./modules/addFinanceData.js";
@@ -10,6 +11,8 @@ import { getTestData } from "./modules/getTestData.js";
 
 // Инициализация Express приложения
 const app = express();
+
+app.use(cors());
 
 // Middleware для разбора JSON-запросов
 app.use(express.json());

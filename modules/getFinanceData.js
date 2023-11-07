@@ -1,42 +1,42 @@
 import { readFile } from "fs/promises";
 // Путь к файлу данных
 const dataFilePath = "./db.json";
+
+const validateDate = (date) =>
+  /^\d{4}-\d{2}-\d{2}$/.test(date) && !isNaN(new Date(date).getTime());
+
 // Функция-обработчик для GET-запроса
 export const getFinanceData = async (req, res) => {
   const { startDate, endDate } = req.query;
-
-  // Получаем начальную и конечную дату месяца
-  const now = new Date();
-  const firstDayOfMonth = new Date(now.getFullYear(), now.getMonth(), 1)
-    .toISOString()
-    .split("T")[0];
-  const currentDay = now.toISOString().split("T")[0];
-
-  // Устанавливаем значения по умолчанию, если даты не были предоставлены
-  const start = startDate || firstDayOfMonth;
-  const end = endDate || currentDay;
-
-  // Проверка валидности формата даты
-  const validateDate = (date) =>
-    /^\d{4}-\d{2}-\d{2}$/.test(date) && !isNaN(new Date(date).getTime());
-
-  if (!validateDate(start) || !validateDate(end)) {
-    return res.status(400).json({
-      message: "Некорректный формат даты. Используйте формат YYYY-MM-DD.",
-    });
-  }
 
   try {
     const data = await readFile(dataFilePath, "utf8");
     let financeData = JSON.parse(data);
 
-    // Фильтруем данные в соответствии с датами
-    financeData = financeData.filter((item) => {
-      const itemDate = item.date;
-      return itemDate >= start && itemDate <= end;
-    });
+    if (startDate || endDate) {
+      const start = startDate || "2000-01-01";
+      const end = endDate || new Date().toISOString().split("T")[0];
 
-    res.json(financeData);
+      if (!validateDate(start) || !validateDate(end)) {
+        return res.status(400).json({
+          message: "Некорректный формат даты. Используйте формат YYYY-MM-DD.",
+        });
+      }
+      const startDataTimeStamp = new Date(start).getTime();
+      const endDataTimeStamp = new Date(end).getTime();
+      const filterFinanceData = financeData.filter(({ date }) => {
+        const timestampDate = new Date(date).getTime();
+        return (
+          timestampDate >= startDataTimeStamp &&
+          timestampDate <= endDataTimeStamp
+        );
+      });
+      res.json(filterFinanceData);
+    } else {
+      res.json(financeData);
+    }
+
+    // Фильтруем данные в соответствии с датами
   } catch (err) {
     res.status(500).json({ message: "Ошибка при работе с файлом данных" });
   }
