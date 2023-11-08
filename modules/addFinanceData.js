@@ -6,6 +6,18 @@ const dataFilePath = "./db.json";
 // Путь к файлу с категориями
 const categoriesFilePath = "./db_categories.json";
 
+function formatDate(date) {
+  let d = new Date(date),
+      month = '' + (d.getUTCMonth() + 1), // Месяцы начинаются с 0
+      day = '' + d.getUTCDate(),
+      year = d.getUTCFullYear();
+
+  if (month.length < 2) month = '0' + month;
+  if (day.length < 2) day = '0' + day;
+
+  return [year, month, day].join('-');
+}
+
 // Функция-обработчик для POST-запроса
 export const addFinanceData = async (req, res) => {
   const { type, amount, description, category } = req.body;
@@ -30,7 +42,8 @@ export const addFinanceData = async (req, res) => {
   const id = uuidv4();
 
   const date = new Date().toISOString();
-
+  const formattedDate = formatDate(date);
+  
   const formatCategory =
     category[0].toUpperCase() + category.slice(1).toLowerCase();
 
@@ -40,7 +53,7 @@ export const addFinanceData = async (req, res) => {
     amount,
     description,
     category: formatCategory,
-    date,
+    date: formattedDate,
   };
 
   try {
